@@ -15,7 +15,7 @@ const InputAndTextarea = () => {
 
   return (
     <div>
-      <Title>Input and Text area</Title>
+      <Title>Input and textarea</Title>
       <div>
         <label htmlFor="name">Name:</label>
         <input type="text" name="name" value={name} onChange={updateName} />
