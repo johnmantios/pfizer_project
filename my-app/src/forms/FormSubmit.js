@@ -15,6 +15,10 @@ const { Title } = Typography;
   }
 }*/
 
+
+
+var jsonArray = [];
+
 const FormSubmit = () => {
   const [gender, setGender] = useState("");
   const [age, setAge] = useState("");
@@ -42,6 +46,7 @@ const FormSubmit = () => {
   const [expired, setExpired] = useState("");
   const [patient_id, setPatient_Id] = useState("");
   const [searchResults, setSearchResults] = useState("");
+  const [isSent, setIsSent] = useState(false);
   
 
   const updateGender = (e) => {
@@ -143,23 +148,39 @@ const FormSubmit = () => {
   const updatePatient_Id = (e) => {
     setPatient_Id(e.target.value);
   }
+
   
-  /*const handleSearch = async (e) => {
-    e.preventDefault();
-    const response = await seacrhSWCharacter(character);
-    setSearchResults(response.results);
-  };*/
+
+
+  const thankYouMessage = <p>Thank you for your input!</p>
+  
+
+  
+  const submit = e => {
+    e.preventDefault()
+    fetch(`http://localhost:3000/forms/form-submit-async/models`, {
+      method: 'POST',
+      body: JSON.stringify({ gender, age , hospitalization, admission_type, admission_origin, admission_diagnosis, insurance, religion, marital_status, ethnicity,
+      num_callouts, num_diagnoses, num_procedures, admission_procedure, num_ctpevents, num_inputevents, num_labevents, num_microbiologyevents, 
+    num_noteevents, num_outputevents, num_procedureevents, num_transfers, num_chartevents, expired, patient_id }),
+    }).then(() => setIsSent(true))
+    .catch(() => alert("There was an error, please try again"))
+  }
+
+  
+
+
 
   return (
     <div>
       <Title>Form submit</Title>
-      <form onSubmit={handleSearch}>
+      <form onSubmit={submit} id="myForm" >
         <div>
-          <label htmlFor="gender">Input patient data:</label>
+          <label htmlFor="gender">Input patient gender:</label>
           <input
             type="text"
             name="gender"
-            value={character}
+            //value={gender}
             onChange={updateGender}
           />
         </div>
@@ -168,7 +189,7 @@ const FormSubmit = () => {
           <input
           type="text"
           name="age"
-          value={character}
+          //value={character}
           onChange={updateAge}/>
         </div>
         <div>
@@ -176,7 +197,7 @@ const FormSubmit = () => {
           <input
           type="text"
           name="hospitalization"
-          value={character}
+          //value={character}
           onChange={updateHospitalization}/>
         </div>
         <div>
@@ -184,7 +205,7 @@ const FormSubmit = () => {
           <input
           type="text"
           name="admission_type"
-          value={character}
+          //value={character}
           onChange={updateAdmission_Type}/>
         </div>
         <div>
@@ -192,7 +213,7 @@ const FormSubmit = () => {
           <input
           type="text"
           name="admission_origin"
-          value={character}
+          //value={character}
           onChange={updateAdmission_Origin}/>
         </div>
         <div>
@@ -200,7 +221,7 @@ const FormSubmit = () => {
           <input
           type="text"
           name="admission_diagnosis"
-          value={character}
+          //value={character}
           onChange={updateAdmission_Diagnosis}/>
         </div>
         <div>
@@ -208,7 +229,7 @@ const FormSubmit = () => {
           <input
           type="text"
           name="insurance"
-          value={character}
+          //value={character}
           onChange={updateInsurance}/>
         </div>
         <div>
@@ -216,7 +237,7 @@ const FormSubmit = () => {
           <input
           type="text"
           name="religion"
-          value={character}
+          //value={character}
           onChange={updateReligion}/>
         </div>
         <div>
@@ -224,7 +245,7 @@ const FormSubmit = () => {
           <input
           type="text"
           name="marital_status"
-          value={character}
+          //value={character}
           onChange={updateMarital_Status}/>
         </div>
         <div>
@@ -232,7 +253,7 @@ const FormSubmit = () => {
           <input
           type="text"
           name="ethnicity"
-          value={character}
+          //value={character}
           onChange={updateEthnicity}/>
         </div>
         <div>
@@ -240,7 +261,7 @@ const FormSubmit = () => {
           <input
           type="text"
           name="num_callouts"
-          value={character}
+          //value={character}
           onChange={updateNum_Callouts}/>
         </div>
         <div>
@@ -248,7 +269,7 @@ const FormSubmit = () => {
           <input
           type="text"
           name="num_diagnoses"
-          value={character}
+          //value={character}
           onChange={updateNum_Diagnoses}/>
         </div>
         <div>
@@ -256,7 +277,7 @@ const FormSubmit = () => {
           <input
           type="text"
           name="num_procedures"
-          value={character}
+          //value={character}
           onChange={updateNum_Procedures}/>
         </div>
         <div>
@@ -264,7 +285,7 @@ const FormSubmit = () => {
           <input
           type="text"
           name="admission_procedure"
-          value={character}
+          //value={character}
           onChange={updateAdmission_Procedure}/>
         </div>
         <div>
@@ -272,7 +293,7 @@ const FormSubmit = () => {
           <input
           type="text"
           name="num_ctpevents"
-          value={character}
+          //value={character}
           onChange={updateNum_Ctpevents}/>
         </div>
         <div>
@@ -280,7 +301,7 @@ const FormSubmit = () => {
           <input
           type="text"
           name="num_unputevents"
-          value={character}
+          //value={character}
           onChange={updateNum_Unputevents}/>
         </div>
         <div>
@@ -288,7 +309,7 @@ const FormSubmit = () => {
           <input
           type="text"
           name="num_labevents"
-          value={character}
+          //value={character}
           onChange={updateNum_Labevents}/>
         </div>
         <div>
@@ -296,7 +317,7 @@ const FormSubmit = () => {
           <input
           type="text"
           name="num_microbiolgyevents"
-          value={character}
+          //value={character}
           onChange={updateNum_Microbiologyevents}/>
         </div>
         <div>
@@ -304,7 +325,7 @@ const FormSubmit = () => {
           <input
           type="text"
           name="num_noteevents"
-          value={character}
+          //value={character}
           onChange={updateNum_Noteevents}/>
         </div>
         <div>
@@ -312,7 +333,7 @@ const FormSubmit = () => {
           <input
           type="text"
           name="num_outputevents"
-          value={character}
+          //value={character}
           onChange={updateNum_Outputevents}/>
         </div>
         <div>
@@ -320,7 +341,7 @@ const FormSubmit = () => {
           <input
           type="text"
           name="num_procedureevents"
-          value={character}
+          //value={character}
           onChange={updateNum_Procedureevents}/>
         </div>
         <div>
@@ -328,7 +349,7 @@ const FormSubmit = () => {
           <input
           type="text"
           name="num_transfers"
-          value={character}
+          //value={character}
           onChange={updateNum_Transfers}/>
         </div>
         <div>
@@ -336,7 +357,7 @@ const FormSubmit = () => {
           <input
           type="text"
           name="num_chartevents"
-          value={character}
+          //value={character}
           onChange={updateNum_Chartevents}/>
         </div>
         <div>
@@ -344,7 +365,7 @@ const FormSubmit = () => {
           <input
           type="text"
           name="expired"
-          value={character}
+          //value={character}
           onChange={updateExpired}/>
         </div>
         <button type="submit">Forecast!</button>
@@ -360,6 +381,9 @@ const FormSubmit = () => {
       )}
     </div>
   );
+
+
+
 };
 
 export default FormSubmit;

@@ -5,7 +5,7 @@ import Header from "./components/Header"
 import Footer from "./components/Footer"
 import SimpleInput from "./forms/SimpleInput"
 import FormSubmit from "./forms/FormSubmit"
-import InputTextArea from "./forms/InputTextArea";
+
 import { Layout } from "antd";
 
 import './App.css';
@@ -23,11 +23,7 @@ const App = () => {
           <Content className="inner-content">
             <Switch>
               <Route exact path="/forms/simple-input" component={SimpleInput} />
-              <Route
-                exact
-                path="/forms/InputTextArea"
-                component={InputTextArea}
-              />
+              
               
               <Route
                 exact
@@ -38,13 +34,16 @@ const App = () => {
 
 
 
-              <Route exact path="/charts/demo-1" component={DemoPage1} />
-              <Route exact path="/charts/demo-2" component={DemoPage2} />
+
             </Switch>
             
           </Content>
+
+          
         </Layout>
+        
       </Layout>
+      <Footer/>
     </Router>
   );
 };
