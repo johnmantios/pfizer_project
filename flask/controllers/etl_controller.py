@@ -10,7 +10,7 @@ api = Blueprint(
 
 @api.route("/")
 def etl():
-    result = etl_service.main()
-    if result["Completed"]:
-        return jsonify(result)
+    result = etl_service.main()[1]
+    if result=="Completed":
+        return 'Good job'
     abort(500)

@@ -13,7 +13,7 @@ def server_error(error):
 
 app.register_blueprint(ping_controller.api)
 app.register_blueprint(etl_controller.api)
-app.register_blueprint(stats_cotroller.api)
-app.register_blueprint(patient_controller.api)
+# app.register_blueprint(stats_cotroller.api)
+# app.register_blueprint(patient_controller.api)
 if __name__ == "__main__":
     app.run(debug=True)
