@@ -17,9 +17,13 @@ def main():
     preprocessed_data = preprocessing(patient_data)
     encoded_data = encoding(preprocessed_data)
     predictions = ml(encoded_data)
-    data_for_sql = pd.concat([preprocessed_data, predictions], axis=1)
-    table = save_to_sql(data_for_sql, 'PatientData')
-    return getFromSql(table),"Completed"
+    # data_for_sql = pd.concat([preprocessed_data, predictions], axis=1)
+    try:
+        save_to_sql(preprocessed_data, 'PatientData')
+        # save_to_sql(data_for_sql, 'PatientData')
+        return {"completed": True}
+    except Exception:
+        return {"completed": False}
 
 
 
@@ -57,21 +61,8 @@ def save_to_sql(data,table_name):
     )
     engine = alc.create_engine("mssql+pyodbc:///?odbc_connect=%s" % params)
  
-    data.to_sql(name=table_name, con=engine, if_exists = 'append', index=False)
+    data.to_sql(name=table_name, con=engine, if_exists = 'replace', index=False)
     return table_name
-
-
-def getFromSql (tableName):
-    params = urllib.parse.quote_plus(
-    'DRIVER={ODBC Driver 17 for SQL Server};'+
-    'SERVER=localhost;'+
-    'DATABASE=pfizer;'+
-    'Trusted_Connection=yes'
-    )
-    engine = alc.create_engine("mssql+pyodbc:///?odbc_connect=%s" % params)
-
-    df = pd.read_sql(tableName, con=engine)
-    return df
 
 
 

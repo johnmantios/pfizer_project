@@ -1,3 +1,5 @@
+# import sys
+import json
 from flask import Blueprint, jsonify, abort
 from services import etl_service
 
@@ -10,7 +12,7 @@ api = Blueprint(
 
 @api.route("/")
 def etl():
-    result = etl_service.main()[1]
-    if result=="Completed":
-        return 'Good job'
+    result = etl_service.main()
+    if result["completed"]:
+        return "Data Saved to SQL Database"
     abort(500)
