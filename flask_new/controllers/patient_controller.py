@@ -4,7 +4,7 @@ import pickle
 import json
 import numpy as np
 import pandas as pd
-from services import etl_services
+from services import etl_service
 
 api = Blueprint(
     name="patient_controller",

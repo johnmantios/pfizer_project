@@ -1,5 +1,8 @@
 from flask import Blueprint, request, jsonify
 from services import patient_service
+import pickle
+import json
+import numpy as np
 
 api = Blueprint(
     name="patient_controller",
@@ -8,13 +11,10 @@ api = Blueprint(
 )
 
 
-# @api.route("/")
-# def get_all():
-
-
 
 @api.route("/", methods=["POST"])
 def create_patient():
+    model = pickle.load(open('model.pkl', 'rb'))
     new_patient = request.get_json()
     
     # new_patient = {
@@ -47,8 +47,6 @@ def create_patient():
     #     "los_group_num": data["los_group_num"]
 
     # }
-    result = patient_service.save_patient(new_patient)
-    if not result:
-        abort(400)
-    #I will try to save it in the db
-    return jsonify(result) #This returns all the data of the new patient. Make it return some data and ML output or only ML output
+    new_data = patient_service.save_patient(new_patient)
+    # result = model.predict(np.array([list(new_data.values())]))
+    return jsonify(new_data)
