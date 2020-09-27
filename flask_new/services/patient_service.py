@@ -4,7 +4,6 @@ import pandas as pd
 def save_patient(patient):
     required_keys = {
         "Year",
-        "Month",
         "Make",
         "Quantity",
         "Pct"
@@ -17,13 +16,6 @@ def save_patient(patient):
     new_to_save = {}
     for k in required_keys:
         new_patient[k] = patient[k]
-    # new_patient = {
-    #     "Year": patient["Year"],
-    #     "Month": patient["Month"],
-    #     "Make": patient["Make"],
-    #     "Quantity": patient["Quantity"],
-    #     "Pct": patient["Pct"]
-    # }
         new_to_save[k] = [patient[k]]
         
     to_save_df = pd.DataFrame.from_dict(new_to_save)
