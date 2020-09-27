@@ -1,12 +1,13 @@
 from flask import Flask, jsonify, make_response
 from flask_cors import CORS
+from repo import db_utils
+
 from controllers import (
     ping_controller,
     etl_controller,
     stats_cotroller,
     patient_controller,
 )
-
 
 app = Flask(__name__)
 CORS(app)
@@ -24,4 +25,6 @@ app.register_blueprint(patient_controller.api)
 
 
 if __name__ == "__main__":
+    db_utils.init_db()
     app.run(debug=True)
+
