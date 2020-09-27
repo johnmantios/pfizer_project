@@ -24,7 +24,7 @@ const Sidebar = () =>  (
       
       <SubMenu icon={<DotChartOutlined />} title="Charts">
         <Item>
-          Useful insights <Link to="/charts/demo-1" />
+          Useful insights <Link to="/charts/demo-2" />
         </Item>
         
       </SubMenu>

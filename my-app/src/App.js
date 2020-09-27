@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
-import SimpleInput from "./forms/SimpleInput"
+import DemoPage2 from "./charts/DemoPage2"
+
 import FormSubmit from "./forms/FormSubmit"
 
 import { Layout } from "antd";
@@ -22,7 +23,7 @@ const App = () => {
           <Sidebar />
           <Content className="inner-content">
             <Switch>
-              <Route exact path="/forms/simple-input" component={SimpleInput} />
+              
               
               
               <Route
@@ -31,7 +32,7 @@ const App = () => {
                 component={FormSubmit}
               />
               
-
+              <Route exact path="/charts/demo-2" component={DemoPage2} />
 
 
 

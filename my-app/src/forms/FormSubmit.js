@@ -3,19 +3,17 @@ import { Typography } from "antd";
 
 const { Title } = Typography;
 
-/*async function seacrhSWCharacter(character) {
+async function Pong() {
   try {
     const res = await fetch(
-      `https://swapi.dev/api/people/?search=${character}`
+      `http://127.0.0.1:5000/ping`
     );
     const data = await res.json();
-    return data;
+    console.log(data);
   } catch (error) {
     console.log(error);
   }
-}*/
-
-
+}
 
 
 
@@ -54,6 +52,13 @@ const FormSubmit = () => {
   };
 
   const updateAge = (e) => {
+    
+    let val = e.target.value;
+    
+    if(!Number(val)){
+      alert("Your age must be a number");
+      }
+    
     setAge(e.target.value);
   };
 
@@ -90,14 +95,33 @@ const FormSubmit = () => {
   }
 
   const updateNum_Callouts = (e) => {
+    let val = e.target.value;
+    
+    if(!Number(val)){
+      alert("The input must be a number");
+      }
+
+
     setNum_Callouts(e.target.value);
   }
 
   const updateNum_Diagnoses = (e) => {
+    let val = e.target.value;
+    
+    if(!Number(val)){
+      alert("The input must be a number");
+      }
+
     setNum_Diagnoses(e.target.value);
   }
 
   const updateNum_Procedures = (e) => {
+    let val = e.target.value;
+    
+    if(!Number(val)){
+      alert("The input must be a number");
+      }
+
     setNum_Procedures(e.target.value);
   }
 
@@ -106,38 +130,92 @@ const FormSubmit = () => {
   }
 
   const updateNum_Ctpevents = (e) => {
+    let val = e.target.value;
+    
+    if(!Number(val)){
+      alert("The input must be a number");
+      }
+
     setNum_Ctpevents(e.target.value);
   }
 
   const updateNum_Inputevents = (e) => {
+    let val = e.target.value;
+    
+    if(!Number(val)){
+      alert("The input must be a number");
+      }
+
     setNum_Inputevents(e.target.value);
   }
 
   const updateNum_Labevents = (e) => {
+    let val = e.target.value;
+    
+    if(!Number(val)){
+      alert("The input must be a number");
+      }
+
     setNum_Labevents(e.target.value);
   }
 
   const updateNum_Microbiologyevents = (e) => {
+    let val = e.target.value;
+    
+    if(!Number(val)){
+      alert("The input must be a number");
+      }
+
     setNum_Microbiologyevents(e.target.value);
   }
 
   const updateNum_Noteevents = (e) => {
+    let val = e.target.value;
+    
+    if(!Number(val)){
+      alert("The input must be a number");
+      }
+
     setNum_Noteevents(e.target.value);
   }
 
   const updateNum_Outputevents = (e) => {
+    let val = e.target.value;
+    
+    if(!Number(val)){
+      alert("The input must be a number");
+      }
+
     setNum_Outputevents(e.target.value);
   }
 
   const updateNum_Procedureevents = (e) => {
+    let val = e.target.value;
+    
+    if(!Number(val)){
+      alert("The input must be a number");
+      }
+
     setNum_Procedureevents(e.target.value);
   }
 
   const updateNum_Transfers = (e) => {
+    let val = e.target.value;
+    
+    if(!Number(val)){
+      alert("The input must be a number");
+      }
+
     setNum_Transfers(e.target.value);
   }
 
   const updateNum_Chartevents = (e) => {
+    let val = e.target.value;
+    
+    if(!Number(val)){
+      alert("The input must be a number");
+      }
+
     setNum_Chartevents(e.target.value);
   }
 
@@ -169,6 +247,7 @@ num_chartevents: num_chartevents, expired: expired};
   const submit = async (e) => {
     e.preventDefault();
     console.log(myJSON);
+    Pong()
   };
   
 
@@ -176,203 +255,255 @@ num_chartevents: num_chartevents, expired: expired};
 
   return (
     <div>
-      <Title>Form submit</Title>
-      <form onSubmit={submit} id="myForm" >
+      <Title>Form submission</Title>
+      <center>
+      <form onSubmit={submit} id="myForm"  >
         <div>
-          <label htmlFor="gender">Input patient gender:</label>
+          <label htmlFor="gender">Input patient gender: </label>
+          <center>
           <input
             type="text"
             name="gender"
             value={gender}
             onChange={updateGender}
+           
           />
+          </center>
         </div>
         <div>
-          <label htmlFor="age">Set patient age:</label>
+          <label htmlFor="age">Set patient age:   </label>
+          <center>
           <input
           type="text"
           name="age"
           value={age}
           onChange={updateAge}/>
+          </center>
         </div>
         <div>
           <label htmlFor="hospitaliazation">Set hospitalization type:</label>
+          <center>
           <input
           type="text"
           name="hospitalization"
           value={hospitalization}
           onChange={updateHospitalization}/>
+          </center>
         </div>
         <div>
-          <label htmlFor="admission type">Set admission type:</label>
+          <label htmlFor="admission type">Set admission type:   </label>
+          <center>
           <input
           type="text"
           name="admission_type"
           value={admission_type}
           onChange={updateAdmission_Type}/>
+          </center>
         </div>
         <div>
-          <label htmlFor="admission_origin">Set admission origin:</label>
+          <label htmlFor="admission_origin">Set admission origin: </label>
+          <center>
           <input
           type="text"
           name="admission_origin"
           value={admission_origin}
           onChange={updateAdmission_Origin}/>
+          </center>
         </div>
         <div>
-          <label htmlFor="admission_diagnosis">Set admission diagnosis:</label>
+          <label htmlFor="admission_diagnosis">Set admission diagnosis: </label>
+          <center>
           <input
           type="text"
           name="admission_diagnosis"
           value={admission_diagnosis}
           onChange={updateAdmission_Diagnosis}/>
+          </center>
         </div>
         <div>
-          <label htmlFor="insurance">Set insurance type:</label>
+          <label htmlFor="insurance">Set insurance type:    </label>
+          <center>
           <input
           type="text"
           name="insurance"
           value={insurance}
           onChange={updateInsurance}/>
+          </center>
         </div>
         <div>
-          <label htmlFor="religion">Set religion:</label>
+          <label htmlFor="religion">Set religion:       </label>
+          <center>
           <input
           type="text"
           name="religion"
           value={religion}
           onChange={updateReligion}/>
+          </center>
         </div>
         <div>
-          <label htmlFor="marital_status">Set marital status:</label>
+          <label htmlFor="marital_status">Set marital status: </label>
+          <center>
           <input
           type="text"
           name="marital_status"
           value={marital_status}
           onChange={updateMarital_Status}/>
+          </center>
         </div>
         <div>
-          <label htmlFor="ethnicity">Set ethnicity:</label>
+          <label htmlFor="ethnicity">Set ethnicity:     </label>
+          <center>
           <input
           type="text"
           name="ethnicity"
           value={ethnicity}
           onChange={updateEthnicity}/>
+          </center>
         </div>
         <div>
           <label htmlFor="num_callouts">Set number of callouts:</label>
+          <center>
           <input
           type="text"
           name="num_callouts"
           value={num_callouts}
           onChange={updateNum_Callouts}/>
+          </center>
         </div>
         <div>
           <label htmlFor="num_diagnoses">Set number of diagnoses:</label>
+          <center>
           <input
           type="text"
           name="num_diagnoses"
           value={num_diagnoses}
           onChange={updateNum_Diagnoses}/>
+          </center>
         </div>
         <div>
           <label htmlFor="num_procedures">Set number of procedures:</label>
+          <center>
           <input
           type="text"
           name="num_procedures"
           value={num_procedures}
           onChange={updateNum_Procedures}/>
+          </center>
         </div>
         <div>
           <label htmlFor="admission_procedure">Set admission procedure:</label>
+          <center>
           <input
           type="text"
           name="admission_procedure"
           value={admission_procedure}
           onChange={updateAdmission_Procedure}/>
+          </center>
         </div>
         <div>
           <label htmlFor="num_ctpevents">Set number of ctp events:</label>
+          <center>
           <input
           type="text"
           name="num_ctpevents"
           value={num_ctpevents}
           onChange={updateNum_Ctpevents}/>
+          </center>
         </div>
         <div>
           <label htmlFor="num_inputevents">Set number of input events:</label>
+          <center>
           <input
           type="text"
           name="num_inputevents"
           value={num_inputevents}
           onChange={updateNum_Inputevents}/>
+          </center>
         </div>
         <div>
           <label htmlFor="num_labevents">Set number of lab events:</label>
+          <center>
           <input
           type="text"
           name="num_labevents"
           value={num_labevents}
           onChange={updateNum_Labevents}/>
+          </center>
         </div>
         <div>
           <label htmlFor="num_microbiologyevents">Set number of microbiology events:</label>
+          <center>
           <input
           type="text"
           name="num_microbiologyevents"
           value={num_microbiologyevents}
           onChange={updateNum_Microbiologyevents}/>
+          </center>
         </div>
         <div>
           <label htmlFor="num_noteevents">Set number of note events:</label>
+          <center>
           <input
           type="text"
           name="num_noteevents"
           value={num_noteevents}
           onChange={updateNum_Noteevents}/>
+          </center>
         </div>
         <div>
           <label htmlFor="num_outputevents">Set number of output events:</label>
+          <center>
           <input
           type="text"
           name="num_outputevents"
           value={num_outputevents}
           onChange={updateNum_Outputevents}/>
+          </center>
         </div>
         <div>
           <label htmlFor="num_procedureevents">Set number of procedure events:</label>
+          <center>
           <input
           type="text"
           name="num_procedureevents"
           value={num_procedureevents}
           onChange={updateNum_Procedureevents}/>
+          </center>
         </div>
         <div>
           <label htmlFor="num_transfers">Set number of transfers:</label>
+          <center>
           <input
           type="text"
           name="num_transfers"
           value={num_transfers}
           onChange={updateNum_Transfers}/>
+          </center>
         </div>
         <div>
           <label htmlFor="num_chartevents">Set number of chart events:</label>
+          <center>
           <input
           type="text"
           name="num_chartevents"
           value={num_chartevents}
           onChange={updateNum_Chartevents}/>
+          </center>
         </div>
         <div>
           <label htmlFor="expired">Set if ??? expired:</label>
+          <center>
+            
           <input
           type="text"
           name="expired"
           value={expired}
           onChange={updateExpired}/>
+          </center>
         </div>
         <button type="submit">Forecast!</button>
       </form>
+      </center>
       {searchResults.length > 0 && (
         <ul>
           {searchResults.map(({ name, gender }) => (
