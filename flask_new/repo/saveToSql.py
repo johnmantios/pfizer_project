@@ -16,5 +16,5 @@ def save_to_sql(data,table_name):
         action = 'append'
     else:
         action = 'replace'
-    data.to_sql(name=table_name, con=engine, if_exists = action, index=False)
+    data.to_sql('PatientData', con=engine, if_exists = action, index=False)
     return table_name
