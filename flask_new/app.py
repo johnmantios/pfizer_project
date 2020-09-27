@@ -7,6 +7,7 @@ from controllers import (
     patient_controller,
 )
 
+
 app = Flask(__name__)
 CORS(app)
 

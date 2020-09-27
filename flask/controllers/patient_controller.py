@@ -3,6 +3,8 @@ from services import patient_service
 import pickle
 import json
 import numpy as np
+import pandas as pd
+from services import etl_service
 
 api = Blueprint(
     name="patient_controller",
@@ -48,5 +50,8 @@ def create_patient():
 
     # }
     new_data = patient_service.save_patient(new_patient)
-    # result = model.predict(np.array([list(new_data.values())]))
-    return jsonify(new_data)
+    print(new_data)
+    enc = etl_service.encoding(pd.DataFrame([new_data]))
+    print(enc)
+    result = model.predict(enc.to_numpy())
+    return jsonify(result)
