@@ -12,5 +12,5 @@ def getFromSql (tableName):
     )
     engine = alc.create_engine("mssql+pyodbc:///?odbc_connect=%s" % params)
 
-    df = pd.read_sql(f"SELECT * FROM {tableName}", con=engine)
+    df = pd.read_sql(f"SELECT * FROM [pfizer].[dbo].[{tableName}]", con=engine)
     return df
