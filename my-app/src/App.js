@@ -6,10 +6,13 @@ import Footer from "./components/Footer"
 import DemoPage2 from "./charts/DemoPage2"
 
 import FormSubmit from "./forms/FormSubmit"
+// import AntFormSubmit from "./forms/AntFormSubmit"
 
 import { Layout } from "antd";
 
 import './App.css';
+
+
 
 
 const {Content} = Layout;
@@ -31,6 +34,12 @@ const App = () => {
                 path="/forms/form-submit-async"
                 component={FormSubmit}
               />
+
+              {/* <Route
+                exact 
+                path="/forms/form-submit-ant"
+                component={AntFormSubmit}
+              /> */}
               
               <Route exact path="/charts/demo-2" component={DemoPage2} />
 

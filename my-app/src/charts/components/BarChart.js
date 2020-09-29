@@ -24,7 +24,7 @@ const BarChart = () => {
   }, []);
 
   return (
-    <Col sm={{ span: 24 }} lg={{ span: 12 }}>
+    <Col sm={{ span: 48 }} lg={{ span: 24 }}>
       {barChartData.length ? (
         <div className="chart-container">
           <Title level={4}>My super bar chart</Title>
@@ -40,12 +40,12 @@ const BarChart = () => {
                 }}
               >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
+                <XAxis dataKey="make" />
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="pv" fill="#8884d8" />
-                <Bar dataKey="uv" fill="#82ca9d" />
+                <Bar dataKey="size" fill="#8884d8" />
+                
               </RechartsBarChart>
             </ResponsiveContainer>
           </div>

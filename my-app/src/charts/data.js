@@ -138,4 +138,21 @@ export const data4 = [
   { name: "Group B", value: 300 },
   { name: "Group C", value: 300 },
   { name: "Group D", value: 200 },
+  { name: "Group e", value: 200 },
+  { name: "Group f", value: 200 },
+  { name: "Group g", value: 200 },
+  { name: "Group x", value: 200 },
+  { name: "Group s", value: 200 },
+  { name: "Group w", value: 200 },
+  { name: "Group t", value: 200 },
+  { name: "Group y", value: 200 },
+  { name: "Group u", value: 200 },
+  { name: "Group i", value: 200 },
+  { name: "Group k", value: 200 },
+  { name: "Group l", value: 200 },
+  { name: "Group m", value: 200 },
+  { name: "Group o", value: 200 },
+  { name: "Group p", value: 200 },
+  { name: "Group z", value: 200 }
+
 ];

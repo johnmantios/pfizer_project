@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import { Typography } from "antd";
+import axios from 'axios';
 
 const { Title } = Typography;
 
-async function Pong() {
-  try {
-    const res = await fetch(
-      `http://127.0.0.1:5000/ping`
-    );
-    const data = await res.json();
-    console.log(data);
-  } catch (error) {
-    console.log(error);
-  }
-}
+// async function Pong() {
+//   try {
+//     const res = await fetch(
+//       `http://127.0.0.1:5000/ping`
+//     );
+//     const data = await res.json();
+//     console.log(data);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 
 
 
@@ -230,27 +231,60 @@ const FormSubmit = () => {
   
 
 
-  const thankYouMessage = <p>Thank you for your input!</p>
+
   
 
   
-  var obj = { gender: gender, age: age, hospitalization: hospitalization, admission_type: admission_type, admission_origin: admission_origin, 
-  admission_diagnosis: admission_diagnosis, insurance: insurance, religion: religion, marital_status: marital_status, ethnicity: ethnicity, 
-num_callouts: num_callouts, num_diagnoses: num_diagnoses, num_procedures: num_procedures, admission_procedure: admission_procedure, 
-num_ctpevents: num_ctpevents, num_inputevents: num_inputevents, num_labevents: num_labevents, num_microbiolgyevents: num_microbiologyevents,
-num_noteevents: num_noteevents, num_outputevents: num_outputevents, num_procedureevents: num_procedureevents, num_transfers: num_transfers,
-num_chartevents: num_chartevents, expired: expired};
+  var obj = { 
+      // gender: gender,
+      age: parseFloat(age),
+      hospitalization: hospitalization, 
+      // admission_type: admission_type, 
+      // admission_origin: admission_origin, 
+      // admission_diagnosis: admission_diagnosis, 
+      // insurance: insurance,
+      // religion: religion, 
+      // marital_status: marital_status,
+      // ethnicity: ethnicity, 
+      num_callouts: parseFloat(num_callouts),
+      num_diagnoses: parseFloat(num_diagnoses)
+      // num_procedures: num_procedures,
+      // admission_procedure: admission_procedure, 
+      // num_ctpevents: num_ctpevents,
+      // num_inputevents: num_inputevents, 
+      // num_labevents: num_labevents, 
+      // num_microbiolgyevents: num_microbiologyevents,
+      // num_noteevents: num_noteevents, 
+      // num_outputevents: num_outputevents, 
+      // num_procedureevents: num_procedureevents,
+      // num_transfers: num_transfers,
+      // num_chartevents: num_chartevents,
+      // expired: expired
+    };
 
   var myJSON = JSON.stringify(obj);
 
 
-  const submit = async (e) => {
-    e.preventDefault();
-    console.log(myJSON);
-    Pong()
-  };
-  
 
+const submit = async (e) => {
+  e.preventDefault();
+  console.log(myJSON);
+  axios.post(
+    "http://127.0.0.1:5000/api/v1.0/model/",
+    myJSON,
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      }
+    }).then(function (response) {
+    console.log( response);
+  })
+  .catch(function (error) {
+    console.log("Post Error : " +error);
+  });
+};
+
+  
 
 
   return (
@@ -258,7 +292,7 @@ num_chartevents: num_chartevents, expired: expired};
       <Title>Form submission</Title>
       <center>
       <form onSubmit={submit} id="myForm"  >
-        <div>
+        {/* <div>
           <label htmlFor="gender">Input patient gender: </label>
           <center>
           <input
@@ -269,7 +303,7 @@ num_chartevents: num_chartevents, expired: expired};
            
           />
           </center>
-        </div>
+        </div> */}
         <div>
           <label htmlFor="age">Set patient age:   </label>
           <center>
@@ -281,7 +315,7 @@ num_chartevents: num_chartevents, expired: expired};
           </center>
         </div>
         <div>
-          <label htmlFor="hospitaliazation">Set hospitalization type:</label>
+          <label htmlFor="hospitalization">Set hospitalization type:</label>
           <center>
           <input
           type="text"
@@ -290,7 +324,7 @@ num_chartevents: num_chartevents, expired: expired};
           onChange={updateHospitalization}/>
           </center>
         </div>
-        <div>
+        {/* <div>
           <label htmlFor="admission type">Set admission type:   </label>
           <center>
           <input
@@ -359,7 +393,7 @@ num_chartevents: num_chartevents, expired: expired};
           value={ethnicity}
           onChange={updateEthnicity}/>
           </center>
-        </div>
+        </div> */}
         <div>
           <label htmlFor="num_callouts">Set number of callouts:</label>
           <center>
@@ -380,7 +414,7 @@ num_chartevents: num_chartevents, expired: expired};
           onChange={updateNum_Diagnoses}/>
           </center>
         </div>
-        <div>
+        {/* <div>
           <label htmlFor="num_procedures">Set number of procedures:</label>
           <center>
           <input
@@ -500,7 +534,7 @@ num_chartevents: num_chartevents, expired: expired};
           value={expired}
           onChange={updateExpired}/>
           </center>
-        </div>
+        </div> */}
         <button type="submit">Forecast!</button>
       </form>
       </center>

@@ -28,7 +28,7 @@ const PieChart = () => {
               <RechartsPieChart>
                 <Pie
                   data={pieChartData}
-                  dataKey="value"
+                  dataKey="make"
                   outerRadius={100}
                   fill="#8884d8"
                   label
