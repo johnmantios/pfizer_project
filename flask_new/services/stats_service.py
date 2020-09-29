@@ -8,7 +8,8 @@ from repo.readFromSql import getFromSql
 patient_df = getFromSql("PatientData")
 
 def main():
-    return {"stats": {"pie_chart_data": pie_chart_data()}}
+    # return {"stats": {"pie_chart_data": pie_chart_data()}}
+    return pie_chart_data()
 
 # # def stats1():
 # #     pass

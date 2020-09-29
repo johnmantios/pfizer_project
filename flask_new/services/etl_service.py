@@ -3,6 +3,7 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(__file__),'..'))
 import pandas as pd
 import os
+import csv
 import requests
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
@@ -12,7 +13,7 @@ import pickle
 
 
 def main():
-    patient_data = pd.read_csv(os.getcwd() + "/repo/sales.csv",encoding="latin-1")
+    patient_data = pd.read_csv(os.getcwd() + "\\repo\\sales.csv",encoding="latin-1")
     preprocessed_data = preprocessing(patient_data)
     encoded_data = encoding(preprocessed_data)
     predictions = ml(encoded_data)
@@ -31,7 +32,8 @@ def preprocessing(data):
     return data
 
 def encoding(data):
-    data_final = pd.get_dummies(data, columns=['Make'])
+    categorical_columns = ['Make']
+    data_final = pd.get_dummies(data, columns=categorical_columns)
     return data_final
 
 def ml(data):

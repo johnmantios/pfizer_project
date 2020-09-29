@@ -1,12 +1,13 @@
 from flask import Flask, jsonify, make_response
 from flask_cors import CORS
 from repo import db_utils
+import os
 
 from controllers import (
     ping_controller,
     etl_controller,
-    stats_cotroller,
-    patient_controller,
+    stats_controller,
+    patient_controller
 )
 
 app = Flask(__name__)
@@ -20,7 +21,7 @@ def server_error(error):
 
 app.register_blueprint(ping_controller.api)
 app.register_blueprint(etl_controller.api)
-app.register_blueprint(stats_cotroller.api)
+app.register_blueprint(stats_controller.api)
 app.register_blueprint(patient_controller.api)
 
 
