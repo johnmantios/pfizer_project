@@ -27,7 +27,7 @@ export const getBarChartData = async () => {
 };
 
 export const getPieChartData = async () => {
-  const res = await fetch("https://api.npoint.io/4c4c0fa1ca1138ba315b");
+  const res = await fetch("http://127.0.0.1:5000/api/v1.0/stats");
   const data = await res.json();
 
   return data;

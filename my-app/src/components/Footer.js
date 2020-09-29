@@ -5,10 +5,12 @@ import {Layout} from "antd";
 const {Footer} = Layout;
 
 const AppFooter = () =>(
-    <Footer className = "footer" >
-        <center>
-        <h4 style ={{color: "#00AFF0" , textalign: "center" }}>Made with ❤️  in Thessaloniki</h4>
-        </center>
+    <Footer  className="align-center">
+        Made with 
+        <span role="img" aria-label="heart">
+            ❤️
+        </span>
+          in Thessaloniki
     </Footer>
 );
 

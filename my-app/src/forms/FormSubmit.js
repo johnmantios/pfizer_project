@@ -3,68 +3,58 @@ import { Typography } from "antd";
 
 const { Title } = Typography;
 
-async function Pong() {
-  try {
-    const res = await fetch(
-      `http://127.0.0.1:5000/ping`
-    );
-    const data = await res.json();
-    console.log(data);
-  } catch (error) {
-    console.log(error);
-  }
-}
+
 
 
 
 const FormSubmit = () => {
   const [gender, setGender] = useState("");
-  const [age, setAge] = useState("");
-  const [hospitalization, setHospitalization] = useState("");
+  // const [age, setAge] = useState("");
+  // const [hospitalization, setHospitalization] = useState("");
   const [admission_type, setAdmission_Type] = useState("");
   const [admission_origin, setAdmission_Origin] = useState("");
   const [admission_diagnosis, setAdmission_Diagnosis] = useState("");
-  const [insurance, setInsurance] = useState("");
-  const [religion, setReligion] = useState("");
-  const [marital_status, setMarital_Status] = useState("");
-  const [ethnicity, setEthnicity] = useState("");
-  const [num_callouts, setNum_Callouts] = useState("");
-  const [num_diagnoses, setNum_Diagnoses] = useState("");
-  const [num_procedures, setNum_Procedures] = useState("");
-  const [admission_procedure, setAdmission_Procedure] = useState("");
-  const [num_ctpevents, setNum_Ctpevents] = useState("");
-  const [num_inputevents, setNum_Inputevents] = useState("");
-  const [num_labevents, setNum_Labevents] = useState("");
-  const [num_microbiologyevents, setNum_Microbiologyevents] = useState("");
-  const [num_noteevents, setNum_Noteevents] = useState("");
-  const [num_outputevents, setNum_Outputevents] = useState("");
-  const [num_procedureevents, setNum_Procedureevents] = useState("");
-  const [num_transfers, setNum_Transfers] = useState("");
-  const [num_chartevents, setNum_Chartevents] = useState("");
-  const [expired, setExpired] = useState("");
-  const [patient_id, setPatient_Id] = useState("");
-  const [searchResults, setSearchResults] = useState("");
-  const [isSent, setIsSent] = useState(false);
+  // const [insurance, setInsurance] = useState("");
+  // const [religion, setReligion] = useState("");
+  // const [marital_status, setMarital_Status] = useState("");
+  // const [ethnicity, setEthnicity] = useState("");
+  // const [num_callouts, setNum_Callouts] = useState("");
+  // const [num_diagnoses, setNum_Diagnoses] = useState("");
+  // const [num_procedures, setNum_Procedures] = useState("");
+  // const [admission_procedure, setAdmission_Procedure] = useState("");
+  // const [num_ctpevents, setNum_Ctpevents] = useState("");
+  // const [num_inputevents, setNum_Inputevents] = useState("");
+  // const [num_labevents, setNum_Labevents] = useState("");
+  // const [num_microbiologyevents, setNum_Microbiologyevents] = useState("");
+  // const [num_noteevents, setNum_Noteevents] = useState("");
+  // const [num_outputevents, setNum_Outputevents] = useState("");
+  // const [num_procedureevents, setNum_Procedureevents] = useState("");
+  // const [num_transfers, setNum_Transfers] = useState("");
+  // const [num_chartevents, setNum_Chartevents] = useState("");
+  // const [expired, setExpired] = useState("");
+  // const [patient_id, setPatient_Id] = useState("");
+  // const [searchResults, setSearchResults] = useState("");
+  // const [isSent, setIsSent] = useState(false);
   
 
   const updateGender = (e) => {
     setGender(e.target.value);
   };
 
-  const updateAge = (e) => {
+  // const updateAge = (e) => {
     
-    let val = e.target.value;
+  //   let val = e.target.value;
     
-    if(!Number(val)){
-      alert("Your age must be a number");
-      }
+  //   if (!Number(val)){
+  //     alert("Your age must be a number");
+  //     }
     
-    setAge(e.target.value);
-  };
+  //   setAge(e.target.value);
+  // };
 
-  const updateHospitalization = (e) => {
-    setHospitalization(e.target.value);
-  }
+  // const updateHospitalization = (e) => {
+  //   setHospitalization(e.target.value);
+  // }
 
   const updateAdmission_Type = (e) => {
     setAdmission_Type(e.target.value);
@@ -78,178 +68,215 @@ const FormSubmit = () => {
     setAdmission_Diagnosis(e.target.value);
   }
 
-  const updateInsurance = (e) => {
-    setInsurance(e.target.value);
-  }
+  // const updateInsurance = (e) => {
+  //   setInsurance(e.target.value);
+  // }
 
-  const updateReligion = (e) => {
-    setReligion(e.target.value);
-  }
+  // const updateReligion = (e) => {
+  //   setReligion(e.target.value);
+  // }
 
-  const updateMarital_Status = (e) => {
-    setMarital_Status(e.target.value);
-  }
+  // const updateMarital_Status = (e) => {
+  //   setMarital_Status(e.target.value);
+  // }
 
-  const updateEthnicity = (e) => {
-    setEthnicity(e.target.value);
-  }
+  // const updateEthnicity = (e) => {
+  //   setEthnicity(e.target.value);
+  // }
 
-  const updateNum_Callouts = (e) => {
-    let val = e.target.value;
+  // const updateNum_Callouts = (e) => {
+  //   let val = e.target.value;
     
-    if(!Number(val)){
-      alert("The input must be a number");
-      }
+  //   if(!Number(val)){
+  //     alert("The input must be a number");
+  //     }
 
 
-    setNum_Callouts(e.target.value);
-  }
+  //   setNum_Callouts(e.target.value);
+  // }
 
-  const updateNum_Diagnoses = (e) => {
-    let val = e.target.value;
+  // const updateNum_Diagnoses = (e) => {
+  //   let val = e.target.value;
     
-    if(!Number(val)){
-      alert("The input must be a number");
-      }
+  //   if(!Number(val)){
+  //     alert("The input must be a number");
+  //     }
 
-    setNum_Diagnoses(e.target.value);
-  }
+  //   setNum_Diagnoses(e.target.value);
+  // }
 
-  const updateNum_Procedures = (e) => {
-    let val = e.target.value;
+  // const updateNum_Procedures = (e) => {
+  //   let val = e.target.value;
     
-    if(!Number(val)){
-      alert("The input must be a number");
-      }
+  //   if(!Number(val)){
+  //     alert("The input must be a number");
+  //     }
 
-    setNum_Procedures(e.target.value);
-  }
+  //   setNum_Procedures(e.target.value);
+  // }
 
-  const updateAdmission_Procedure = (e) => {
-    setAdmission_Procedure(e.target.value);
-  }
+  // const updateAdmission_Procedure = (e) => {
+  //   setAdmission_Procedure(e.target.value);
+  // }
 
-  const updateNum_Ctpevents = (e) => {
-    let val = e.target.value;
+  // const updateNum_Ctpevents = (e) => {
+  //   let val = e.target.value;
     
-    if(!Number(val)){
-      alert("The input must be a number");
-      }
+  //   if(!Number(val)){
+  //     alert("The input must be a number");
+  //     }
 
-    setNum_Ctpevents(e.target.value);
-  }
+  //   setNum_Ctpevents(e.target.value);
+  // }
 
-  const updateNum_Inputevents = (e) => {
-    let val = e.target.value;
+  // const updateNum_Inputevents = (e) => {
+  //   let val = e.target.value;
     
-    if(!Number(val)){
-      alert("The input must be a number");
-      }
+  //   if(!Number(val)){
+  //     alert("The input must be a number");
+  //     }
 
-    setNum_Inputevents(e.target.value);
-  }
+  //   setNum_Inputevents(e.target.value);
+  // }
 
-  const updateNum_Labevents = (e) => {
-    let val = e.target.value;
+  // const updateNum_Labevents = (e) => {
+  //   let val = e.target.value;
     
-    if(!Number(val)){
-      alert("The input must be a number");
-      }
+  //   if(!Number(val)){
+  //     alert("The input must be a number");
+  //     }
 
-    setNum_Labevents(e.target.value);
-  }
+  //   setNum_Labevents(e.target.value);
+  // }
 
-  const updateNum_Microbiologyevents = (e) => {
-    let val = e.target.value;
+  // const updateNum_Microbiologyevents = (e) => {
+  //   let val = e.target.value;
     
-    if(!Number(val)){
-      alert("The input must be a number");
-      }
+  //   if(!Number(val)){
+  //     alert("The input must be a number");
+  //     }
 
-    setNum_Microbiologyevents(e.target.value);
-  }
+  //   setNum_Microbiologyevents(e.target.value);
+  // }
 
-  const updateNum_Noteevents = (e) => {
-    let val = e.target.value;
+  // const updateNum_Noteevents = (e) => {
+  //   let val = e.target.value;
     
-    if(!Number(val)){
-      alert("The input must be a number");
-      }
+  //   if(!Number(val)){
+  //     alert("The input must be a number");
+  //     }
 
-    setNum_Noteevents(e.target.value);
-  }
+  //   setNum_Noteevents(e.target.value);
+  // }
 
-  const updateNum_Outputevents = (e) => {
-    let val = e.target.value;
+  // const updateNum_Outputevents = (e) => {
+  //   let val = e.target.value;
     
-    if(!Number(val)){
-      alert("The input must be a number");
-      }
+  //   if(!Number(val)){
+  //     alert("The input must be a number");
+  //     }
 
-    setNum_Outputevents(e.target.value);
-  }
+  //   setNum_Outputevents(e.target.value);
+  // }
 
-  const updateNum_Procedureevents = (e) => {
-    let val = e.target.value;
+  // const updateNum_Procedureevents = (e) => {
+  //   let val = e.target.value;
     
-    if(!Number(val)){
-      alert("The input must be a number");
-      }
+  //   if(!Number(val)){
+  //     alert("The input must be a number");
+  //     }
 
-    setNum_Procedureevents(e.target.value);
-  }
+  //   setNum_Procedureevents(e.target.value);
+  // }
 
-  const updateNum_Transfers = (e) => {
-    let val = e.target.value;
+  // const updateNum_Transfers = (e) => {
+  //   let val = e.target.value;
     
-    if(!Number(val)){
-      alert("The input must be a number");
-      }
+  //   if(!Number(val)){
+  //     alert("The input must be a number");
+  //     }
 
-    setNum_Transfers(e.target.value);
-  }
+  //   setNum_Transfers(e.target.value);
+  // }
 
-  const updateNum_Chartevents = (e) => {
-    let val = e.target.value;
+  // const updateNum_Chartevents = (e) => {
+  //   let val = e.target.value;
     
-    if(!Number(val)){
-      alert("The input must be a number");
-      }
+  //   if(!Number(val)){
+  //     alert("The input must be a number");
+  //     }
 
-    setNum_Chartevents(e.target.value);
-  }
+  //   setNum_Chartevents(e.target.value);
+  // }
 
-  const updateExpired = (e) => {
-    setExpired(e.target.value);
-  }
+  // const updateExpired = (e) => {
+  //   setExpired(e.target.value);
+  // }
 
-  const updatePatient_Id = (e) => {
-    setPatient_Id(e.target.value);
-  }
+  // const updatePatient_Id = (e) => {
+  //   setPatient_Id(e.target.value);
+  // }
 
   
 
 
-  const thankYouMessage = <p>Thank you for your input!</p>
+  // const thankYouMessage = <p>Thank you for your input!</p>
   
 
   
-  var obj = { gender: gender, age: age, hospitalization: hospitalization, admission_type: admission_type, admission_origin: admission_origin, 
-  admission_diagnosis: admission_diagnosis, insurance: insurance, religion: religion, marital_status: marital_status, ethnicity: ethnicity, 
-num_callouts: num_callouts, num_diagnoses: num_diagnoses, num_procedures: num_procedures, admission_procedure: admission_procedure, 
-num_ctpevents: num_ctpevents, num_inputevents: num_inputevents, num_labevents: num_labevents, num_microbiolgyevents: num_microbiologyevents,
-num_noteevents: num_noteevents, num_outputevents: num_outputevents, num_procedureevents: num_procedureevents, num_transfers: num_transfers,
-num_chartevents: num_chartevents, expired: expired};
+  var obj = {
+    gender: gender, 
+    // age: age, 
+    // hospitalization: hospitalization, 
+    admission_type: admission_type, 
+    admission_origin: admission_origin, 
+    admission_diagnosis: admission_diagnosis,
+    // insurance: insurance, religion: religion, 
+    // marital_status: marital_status, 
+    // ethnicity: ethnicity, 
+    // num_callouts: num_callouts, 
+    // num_diagnoses: num_diagnoses, 
+    // num_procedures: num_procedures, 
+    // admission_procedure: admission_procedure, 
+    // num_ctpevents: num_ctpevents, 
+    // num_inputevents: num_inputevents, 
+    // num_labevents: num_labevents, 
+    // num_microbiolgyevents: num_microbiologyevents,
+    // num_noteevents: num_noteevents, 
+    // num_outputevents: num_outputevents, 
+    // num_procedureevents: num_procedureevents, 
+    // num_transfers: num_transfers,
+    // num_chartevents: num_chartevents, 
+    // expired: expired
+  };
 
   var myJSON = JSON.stringify(obj);
 
 
-  const submit = async (e) => {
-    e.preventDefault();
-    console.log(myJSON);
-    Pong()
-  };
-  
+  // const submit = async (e) => {
+  //   e.preventDefault();
+  //   console.log(myJSON);
+  //   prediction()
+  // };
+
+  async function submit() {
+    try {
+      const res = await fetch(
+        "http://127.0.0.1:5000/api/v1.0/model/", {
+            method: "POST",
+            headers: {
+              "Accept": "application/json",
+              "Content-Type": "application/json"
+            },
+            body: myJSON
+        }
+      );
+      const data = await res.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
 
 
@@ -270,7 +297,7 @@ num_chartevents: num_chartevents, expired: expired};
           />
           </center>
         </div>
-        <div>
+        {/* <div>
           <label htmlFor="age">Set patient age:   </label>
           <center>
           <input
@@ -279,8 +306,8 @@ num_chartevents: num_chartevents, expired: expired};
           value={age}
           onChange={updateAge}/>
           </center>
-        </div>
-        <div>
+        </div> */}
+        {/* <div>
           <label htmlFor="hospitaliazation">Set hospitalization type:</label>
           <center>
           <input
@@ -289,7 +316,7 @@ num_chartevents: num_chartevents, expired: expired};
           value={hospitalization}
           onChange={updateHospitalization}/>
           </center>
-        </div>
+        </div> */}
         <div>
           <label htmlFor="admission type">Set admission type:   </label>
           <center>
@@ -320,7 +347,7 @@ num_chartevents: num_chartevents, expired: expired};
           onChange={updateAdmission_Diagnosis}/>
           </center>
         </div>
-        <div>
+        {/* <div>
           <label htmlFor="insurance">Set insurance type:    </label>
           <center>
           <input
@@ -500,11 +527,11 @@ num_chartevents: num_chartevents, expired: expired};
           value={expired}
           onChange={updateExpired}/>
           </center>
-        </div>
+        </div> */}
         <button type="submit">Forecast!</button>
       </form>
       </center>
-      {searchResults.length > 0 && (
+      {/* {searchResults.length > 0 && (
         <ul>
           {searchResults.map(({ name, gender }) => (
             <li key={name}>
@@ -512,7 +539,7 @@ num_chartevents: num_chartevents, expired: expired};
             </li>
           ))}
         </ul>
-      )}
+      )} */}
     </div>
   );
 
