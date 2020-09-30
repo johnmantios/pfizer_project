@@ -6,11 +6,7 @@ const {Footer} = Layout;
 
 const AppFooter = () =>(
     <Footer  className="align-center">
-        Made with 
-        <span role="img" aria-label="heart">
-            ❤️
-        </span>
-          in Thessaloniki
+        Data Science Bootcamp powered by Pfizer
     </Footer>
 );
 

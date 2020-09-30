@@ -6,9 +6,9 @@ import Footer from "./components/Footer"
 import TeamMembers from "./components/TeamMembers";
 import Intro from "./components/Intro";
 import DemoPage2 from "./charts/DemoPage2"
-// import FormSubmit from "./forms/FormSubmit"
 import { Layout } from "antd";
-import NewForm from "./forms/NewForm"
+import MyForm from "./forms/BigForm";
+
 
 const {Content} = Layout;
 
@@ -24,7 +24,7 @@ const App = () => {
               <Switch>
                 <Route exact path="/" component={Intro}/>
                 <Route exact path="/about" component={TeamMembers}/>
-                <Route exact path="/form" component={NewForm}/>
+                <Route exact path="/form" component={MyForm}/>
                 <Route exact path="/charts" component={DemoPage2}/>
                 
               </Switch>

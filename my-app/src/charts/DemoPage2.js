@@ -12,7 +12,7 @@ const { Title } = Typography;
 const DemoPage2 = () => {
   return (
     <div className="demo-container">
-      <Title>Demo page 2 (async)</Title>
+      <Title>Useful Insights</Title>
       <Divider />
       <Stats />
       <LineChart />

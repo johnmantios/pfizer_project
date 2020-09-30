@@ -40,11 +40,7 @@ const Intro = () => (
         </ul>
       </p>
       </List>
-    <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
+      <hr style={{height:"19mm", visibility:"hidden"}}/>
     </>
 );
 

@@ -9,9 +9,9 @@ const { Title } = Typography;
 
 const TeamMembers = () => (
   <>
-    <Title style={{textAlign:"center",fontSize:"30px"}}>Team members</Title>
+    <Title style={{textAlign:"center",fontSize:"30px"}}>Team II Members</Title>
     <List
-      size="large"
+      
       bordered
       dataSource={team}
       renderItem={({ name, image, description }) => (
@@ -24,6 +24,7 @@ const TeamMembers = () => (
         </List.Item>
       )}
     />
+    <hr style={{height:"2.7mm", visibility:"hidden"}}/>
   </>
 );
 

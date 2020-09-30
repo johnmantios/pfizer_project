@@ -35,15 +35,10 @@ body {
 }
 
 .align-center {
-  position: fixed;
-  left: 0px;
-  bottom: 0px;
   height: 0mm;
-  width: 100%;
   background-color: black;
   color: white;
-  text-align: center;
-  font-size: 10px;
+  font-size: 15px;
   display: flex;
   justify-content: center;
   align-items: center;

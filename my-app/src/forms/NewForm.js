@@ -3,19 +3,7 @@ import { Form, Input, Button, Typography, List, Divider } from "antd";
 
 const { Title } = Typography;
 
-async function seacrhSWCharacter(character) {
-  try {
-    const res = await fetch(
-      `https://swapi.dev/api/people/?search=${character}`
-    );
-    const data = await res.json();
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-const AntDesignFormSubmit = () => {
+const AgeForm = () => {
   const [character, setCharacter] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const updateCharacter = (e) => {
@@ -63,4 +51,4 @@ const AntDesignFormSubmit = () => {
   );
 };
 
-export default AntDesignFormSubmit;
+export default AgeForm;
