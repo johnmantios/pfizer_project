@@ -13,82 +13,18 @@ const layout = {
   },
 };
 
-
-// const validateMessages = {
-//   required: '${label} is required!',
-//   types: {
-//     email: '${label} is not validate email!',
-//     number: '${label} is not a validate number!',
-//   },
-//   number: {
-//     range: '${label} must be between ${min} and ${max}',
-//   },
-// };
-
 const RadioGroup = Radio.Group;
-const MyForm = () => {
-
-
-
-    // const [Year, setYear] = useState("");
-    // const updateYear = (e) => {
-    //     setYear(e.target.value);
-    // }
-    // const [Make,setMake] = useState("");
-    // const updateMake = (e) => {
-    //   setMake(e.target.value)
-    // }
-    // const [Quantity, setQuantity] = useState("");
-    // const updateQuantity = (e) => {
-    //   setQuantity(e.target.value)
-    // }
-    // const [Pct, setPct] = useState("");
-    // const updatePct = (e) => {
-    //   setPct(e.target.value)
-    // }
-
-
-
-    
-
-    // const submit = async (e) => {
-    //   e.preventDefault();
-    //   console.log(obj);
-    //   axios.post(
-    //     "http://127.0.0.1:5000/api/v1.0/model/",
-    //     obj,
-    //     {
-    //       headers: {
-    //         "Access-Control-Allow-Origin": "*",
-    //         'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
-    //         'Access-Control-Allow-Headers': 'Content-Type'
-    //       }
-    //     }).then(function (response) {
-    //     console.log( response);
-    //   })
-    //   .catch(function (error) {
-    //     console.log("Post Error : " +error);
-    //   });
-    // };
-    
-
-    
+const MyForm = () => { 
+      const [aState,setA] = useState();  
       const onFinish = (values) =>{
-
         const myValues = values["user"]
-        console.log(myValues)
 
-        
-        
         const obj = {
           Year: myValues["gender"],
           Make: myValues["age"], 
           Quantity: parseInt(myValues["email"]),
           Pct: parseFloat(myValues["website"])
-        }
-        console.log(obj)
-
-       
+        }       
       
         axios.post(
         "http://127.0.0.1:5000/api/v1.0/model/",
@@ -101,6 +37,7 @@ const MyForm = () => {
           }
         }).then(function (response) {
         console.log( response);
+        setA(response["data"]["prediction"]["hospitalization"])
       })
       .catch(function (error) {
         console.log("Post Error : " +error);
@@ -121,11 +58,9 @@ const MyForm = () => {
     // validateMessages={validateMessages}
     >
       <Form.Item label="Gender"  name={['user','gender']}>
-        <RadioGroup 
-        // onChange={updateYear} 
-        >
-            <Radio value={2020}>2020</Radio>
-            <Radio value={2021}>2021</Radio>
+        <RadioGroup>
+            <Radio value={1}>Male</Radio>
+            <Radio value={2}>Female</Radio>
         </RadioGroup>
       </Form.Item>
       <Form.Item
@@ -234,124 +169,19 @@ const MyForm = () => {
       </Card>
       </Col>
       <Col span={8}>
-      {/* <Card>
-      <Form {...layout} validateMessages={validateMessages}>
-      <Form.Item
-        name={['user', 'age']}
-        label="num"
-        rules={[
-          {
-            type: 'number',
-            min: 0,
-            max: 99,
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        name={['user', 'age']}
-        label="Age"
-        rules={[
-          {
-            type: 'number',
-            min: 0,
-            max: 99,
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        name={['user', 'age']}
-        label="Age"
-        rules={[
-          {
-            type: 'number',
-            min: 0,
-            max: 99,
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        name={['user', 'age']}
-        label="Age"
-        rules={[
-          {
-            type: 'number',
-            min: 0,
-            max: 99,
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        name={['user', 'age']}
-        label="Age"
-        rules={[
-          {
-            type: 'number',
-            min: 0,
-            max: 99,
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        name={['user', 'age']}
-        label="Age"
-        rules={[
-          {
-            type: 'number',
-            min: 0,
-            max: 99,
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        name={['user', 'age']}
-        label="Age"
-        rules={[
-          {
-            type: 'number',
-            min: 0,
-            max: 99,
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        name={['user', 'age']}
-        label="Age"
-        rules={[
-          {
-            type: 'number',
-            min: 0,
-            max: 99,
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-    </Form>
-    </Card> */}
+      <Card>
+        <center><h1 style={{fontSize:"25px"}}><b>Prediction</b></h1></center>
+        {/* <center><h1 style={{fontSize:"20px"}}>{{aState} === "Day" ? "The patient will stay in the hospital for a day":
+                                               {aState} === "Week" ? "The patient will stay in the hospital from two days to a week":
+                                               {aState} === "TwoWeeks" ? "The patient will stay in the hospital from one week to two weeks":
+                                               {aState} === "Month" ? "The patient will stay in the hospital from two weeks to a month":
+                                               {aState} === "More" ? "The patient will stay in the hospital for more than a month": ""}
+        </h1></center> */}
+        <center><h1 style={{fontSize:"20px"}}>{aState}</h1></center>
+      </Card>
     </Col>
   </Row>
   </div>
-    <Form >
-    {/* <center>
-    <Button type="primary" htmlType="submit"   >
-      Forecast
-    </Button>
-    </center> */}
-  </Form >
   </div>
   );
 };
