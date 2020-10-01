@@ -210,11 +210,11 @@ const AdvancedSearchForm = () => {
                     </Col>
                     <Col span={6}>
                         <Form.Item 
-                            name={['user', 'numDiagnosis']} label="Diagnosis"
+                            name={['user', 'numDiagnoses']} label="Diagnoses"
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Please type the number of diagnosis',
+                                    message: 'Please type the number of diagnoses',
                                 }
                             ]}
                         >
@@ -262,11 +262,11 @@ const AdvancedSearchForm = () => {
                     </Col>
                     <Col span={6}>
                         <Form.Item 
-                            name={['user', 'numlabelEvents']} label="Label Events"
+                            name={['user', 'numlabEvents']} label="Lab Events"
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Please type the number of label events',
+                                    message: 'Please type the number of lab events',
                                 }
                             ]}
                         >
