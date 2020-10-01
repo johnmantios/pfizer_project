@@ -32,9 +32,9 @@ export default [
       <p>
           Junior Data Scientist
           <br></br>
-          <a href= "https://www.linkedin.com/in/grigorios-kapriniotis/">LinkedIn</a>
+          <a href= "https://www.linkedin.com/in/john-mantios/">LinkedIn</a>
           <br></br>
-          <a href = "mailto: gkapriniotis14@gmail.com">Email</a>
+          <a href = "mailto: gmantios@gmail.com">Email</a>
        </p>
     },
     {

@@ -15,34 +15,37 @@ const layout = {
 
 const RadioGroup = Radio.Group;
 const MyForm = () => { 
-      const [aState,setA] = useState();  
-      const onFinish = (values) =>{
-        const myValues = values["user"]
-
-        const obj = {
-          Year: myValues["gender"],
-          Make: myValues["age"], 
-          Quantity: parseInt(myValues["email"]),
-          Pct: parseFloat(myValues["website"])
-        }       
+  
+  const [aState,setA] = useState();  
+  
+  const onFinish = (values) =>{
+    const myValues = values["user"]
+    
+    const obj = {
+      Year: myValues["gender"],
+      Make: myValues["age"], 
+      Quantity: parseInt(myValues["email"]),
+      Pct: parseFloat(myValues["website"])
+    }       
       
-        axios.post(
-        "http://127.0.0.1:5000/api/v1.0/model/",
-        obj,
-        {
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
-            'Access-Control-Allow-Headers': 'Content-Type'
-          }
-        }).then(function (response) {
-        console.log( response);
-        setA(response["data"]["prediction"]["hospitalization"])
-      })
-      .catch(function (error) {
-        console.log("Post Error : " +error);
-      })
+  axios.post(
+    "http://127.0.0.1:5000/api/v1.0/model/",
+    obj,
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
+        'Access-Control-Allow-Headers': 'Content-Type'
       }
+    })
+    .then(function (response) {
+      console.log( response);
+      setA(response["data"]["prediction"]["hospitalization"])
+    })
+    .catch(function (error) {
+      console.log("Post Error : " +error);
+    })
+  }
     
 
   return (
@@ -160,7 +163,7 @@ const MyForm = () => {
       </Form.Item> */}
       <Form.Item>
       <center>
-    <Button type="primary" htmlType="submit"   >
+    <Button type="primary" htmlType="submit">
       Forecast
     </Button>
     </center>

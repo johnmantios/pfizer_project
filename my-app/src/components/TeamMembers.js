@@ -2,14 +2,11 @@ import React from "react";
 import { List, Typography, Avatar } from "antd";
 import team from "../data/teamMembers";
 
-
-
-
 const { Title } = Typography;
 
 const TeamMembers = () => (
   <>
-    <Title style={{textAlign:"center",fontSize:"30px"}}>Team II Members</Title>
+    <b><Title style={{textAlign:"center",fontSize:"30px"}}>Team II Members</Title></b>
     <List
       
       bordered

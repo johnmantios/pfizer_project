@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "antd": "^4.6.6",
     "axios": "^0.20.0",
+    "rc-texty": "^0.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-image-file-resizer": "^0.3.8",
