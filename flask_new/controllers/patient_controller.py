@@ -30,13 +30,13 @@ def create_patient():
     
     result = model.predict(final_df.to_numpy())
     
-    if result[0] < 3:
+    if result[0] == 0:
         hospitalization = 'Day'
-    elif result[0] < 5:
+    elif result[0] == 1:
         hospitalization = 'Week'
-    elif result[0] < 7:
-        hospitalization = 'Two Weeks'
-    elif result[0] < 9:
+    elif result[0] == 2:
+        hospitalization = 'TwoWeeks'
+    elif result[0] == 3:
         hospitalization = 'Month'
     else:
         hospitalization = 'More'
