@@ -1,4 +1,7 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, make_response
+import os.path
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__),'..'))
 from services import patient_service
 import pickle
 import json
@@ -17,6 +20,9 @@ api = Blueprint(
 @api.route("/", methods=["POST"])
 def create_patient():
     new_patient = request.get_json()
+    # if new_patient is  None:
+    #         return make_response(jsonify({"error": "noob give patient"}), 400)
+
     model = pickle.load(open('model.pkl', 'rb'))
 
     db_df = getFromSql("PatientData")
@@ -30,17 +36,18 @@ def create_patient():
     
     result = model.predict(final_df.to_numpy())
     
-    if result[0] == 0:
+    if result[0] == 0 :
         hospitalization = 'Day'
     elif result[0] == 1:
         hospitalization = 'Week'
     elif result[0] == 2:
-        hospitalization = 'TwoWeeks'
+        hospitalization = 'Two Weeks'
     elif result[0] == 3:
         hospitalization = 'Month'
     else:
         hospitalization = 'More'
 
+    print(result)
 
     return jsonify(
         {
@@ -50,3 +57,6 @@ def create_patient():
             }
         }
     )
+
+    if __name__=="__main__":
+        create_patient()

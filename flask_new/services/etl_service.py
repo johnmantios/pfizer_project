@@ -26,19 +26,18 @@ def main():
                              'UNKNOWN','NOT AVAIL.',' ','UNKNOWN (DEFAULT)'])
 
 
-    preprocessed_data = preprocessing(data)[0]
-    print(preprocessed_data)
-    stats_data = preprocessing(data)[1]
-    print(stats_data)
+    preprocessed_data, stats_data = preprocessing(data)
+    # stats_data.to_csv(os.getcwd() + "/repo/stats_data.csv")
     encoded_data = encoding(preprocessed_data)
-    # pred = ml(encoded_data)
+    # ml(encoded_data)
     data_for_sql = preprocessed_data.drop(columns=['Hospitalization'])
+    
     try:
         save_to_sql(stats_data,'Data')
         save_to_sql(data_for_sql, 'PatientData')
-        return "works"
+        return {"completed": True}
     except Exception:
-        return "shit"
+        return {"completed": False}
 
 
 
@@ -123,16 +122,14 @@ def preprocessing(data):
     #hospitalization
 
     data=data.drop('admission_diagnosis', axis=1)
-    data2 = data.copy()
+    data2=data.copy()
+
     data['hospitalization'] = data['hospitalization'].apply(lambda x: "Day" if x==1 else ("Week" if x < 8 else ("TwoWeeks" if x<15 else ("Month" if x<31 else "More"))))
     # category = pd.cut(data['hospitalization'],bins=[-1,1,7,14,30,300],labels=['Day','Week','TwoWeeks','Month','More'])
     # category = category.replace(
     #     {"Day": 0 ,"Week": 1,"TwoWeeks" : 2, "Month" : 3, "More" : 4})
     # data['duration_of_hospitalization']=category
     # data=data.drop('hospitalization',axis=1)
-
-    
-
 
 
     # data=data.drop('admission_origin', axis=1)
@@ -142,20 +139,18 @@ def preprocessing(data):
     # data = data.join(encoded_adprocedure)
     # data = data.drop('admission_procedure',axis = 1)
 
-    
+    data2['Hospitalization2'] = data['hospitalization']
 
     data.columns = ['Gender', 'Age', 'Hospitalization' ,'AdmissionType', 'AdmissionOrigin',  'Insurance', 'Religion', 'Ethnicity',
     'Callouts','Diagnoses','Procedures','AdmissionProcedures','CptEvents' ,'LabEvents', 'MicrobiologyEvents','NoteEvents','OutputEvents',
     'Transfers','ChartEvents']
-
-    data2["Hospitalization2"] = data["Hospitalization"]
 
     data = data[['Gender', 'Age', 'Hospitalization' ,'Religion', 'Ethnicity', 'AdmissionType', 'AdmissionOrigin', 'Insurance',
     'AdmissionProcedures', 'Callouts', 'Diagnoses', 'Procedures', 'Transfers', 'CptEvents', 'LabEvents'
     ,'NoteEvents', 'OutputEvents', 'ChartEvents', 'MicrobiologyEvents']]
 
 
-    return data,data2
+    return data, data2
 
 
 
