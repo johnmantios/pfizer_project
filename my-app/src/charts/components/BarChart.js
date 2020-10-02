@@ -7,12 +7,15 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  Cell,
   BarChart as RechartsBarChart,
   Bar,
 } from "recharts";
 import { getBarChartData } from "./api";
 
 const { Title } = Typography;
+
+const COLORS = ["#00846b", "#6a0084", "#840018", "#CCCC00"]
 
 const BarChart = () => {
   const [barChartData, setBarChartData] = useState([]);
@@ -27,7 +30,7 @@ const BarChart = () => {
     <Col sm={{ span: 24 }} lg={{ span: 12 }}>
       {barChartData.length ? (
         <div className="chart-container">
-          <Title level={4}>My super bar chart</Title>
+          <Title style={{textAlign:"center"}} level={4}>Mean Hospitalization Time Based On Admission Type</Title>
           <div className="chart-inner">
             <ResponsiveContainer>
               <RechartsBarChart
@@ -40,12 +43,16 @@ const BarChart = () => {
                 }}
               >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="hospitalization" />
+                <XAxis dataKey="admission_type" />
                 <YAxis />
                 <Tooltip />
-                <Legend />
-                <Bar dataKey="pv" fill="#8884d8" />
-                <Bar dataKey="uv" fill="#82ca9d" />
+                {/* <Legend /> */}
+                <Bar dataKey="hospitalization" fill="#8884d8">
+                {
+                  barChartData.map((entry,index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]}/>)
+                }
+                </Bar>
+                <Bar dataKey="admission_type" fill="#82ca9d" />
               </RechartsBarChart>
             </ResponsiveContainer>
           </div>

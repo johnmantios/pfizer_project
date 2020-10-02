@@ -12,7 +12,7 @@ const COLORS = ["#00846b", "#6a0084", "#840018", "#CCCC00","#280084"]
 
 const { Title } = Typography;
 
-const PieChart = () => {
+const PieChart2 = () => {
   const [pieChartData, setPieChartData] = useState([]);
 
   useEffect(() => {
@@ -22,10 +22,10 @@ const PieChart = () => {
   }, []);
 
   return (
-    <Col sm={{ span: 24 }} lg={{ span: 12 }}>
+    <Col sm={{ span: 36 }} lg={{ span: 24 }}>
       {pieChartData.length ? (
         <div className="chart-container">
-          <Title level={4}>My super pie chart</Title>
+          <Title style={{textAlign:"center"}} level={4}>Number Of Patients</Title>
           <div className="chart-inner">
             <ResponsiveContainer>
               <RechartsPieChart>
@@ -33,7 +33,7 @@ const PieChart = () => {
                   data={pieChartData}
                   dataKey="size"
                   nameKey= "Hospitalization2"
-                  outerRadius={100}
+                  outerRadius={135}
                   label
                   >
                   {
@@ -55,4 +55,4 @@ const PieChart = () => {
   );
 };
 
-export default PieChart;
+export default PieChart2;

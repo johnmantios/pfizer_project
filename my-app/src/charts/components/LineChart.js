@@ -1,69 +1,69 @@
 import React, { useState, useEffect } from "react";
-import { Typography, Row, Col, Card, Spin } from "antd";
+import { Typography, Col, Card, Spin } from "antd";
 import {
   ResponsiveContainer,
-  LineChart as RechartsLineChart,
-  Line,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
   Legend,
+  Cell,
+  BarChart as RechartsBarChart,
+  Bar,
 } from "recharts";
 import { getLineChartData } from "./api";
 
 const { Title } = Typography;
 
-const LineChart = () => {
-  const [lineChartData, setLineChartData] = useState([]);
+const COLORS = ["#00846b", "#6a0084", "#840018", "#CCCC00", "pink", "orange"]
+
+const BarChart2 = () => {
+  const [barChartData, setBarChartData] = useState([]);
 
   useEffect(() => {
     getLineChartData().then((data) => {
-      setLineChartData(data);
+      setBarChartData(data);
     });
   }, []);
 
   return (
-    <Row className="row" gutter={[24, 24]}>
-      <Col span={24}>
-        {lineChartData.length ? (
-          <div className="chart-container">
-            <Title level={4}>My super line chart</Title>
-            <div className="chart-inner">
-              <ResponsiveContainer>
-                <RechartsLineChart
-                  data={lineChartData}
-                  margin={{
-                    top: 5,
-                    right: 30,
-                    left: 20,
-                    bottom: 5,
-                  }}
-                >
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" />
-                  <YAxis />
-                  <Tooltip />
-                  <Legend />
-                  <Line
-                    type="monotone"
-                    dataKey="pv"
-                    stroke="#8884d8"
-                    activeDot={{ r: 8 }}
-                  />
-                  <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-                </RechartsLineChart>
-              </ResponsiveContainer>
-            </div>
+    <Col sm={{ span: 36 }} lg={{ span: 24 }}>
+      {barChartData.length ? (
+        <div className="chart-container">
+          <Title style={{textAlign:"center"}} level={4}>Mean Hospitalization Time Based On Insurance</Title>
+          <div className="chart-inner">
+            <ResponsiveContainer>
+              <RechartsBarChart
+                data={barChartData}
+                margin={{
+                  top: 5,
+                  right: 30,
+                  left: 20,
+                  bottom: 5,
+                }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey=" insurance" />
+                <YAxis />
+                <Tooltip />
+                {/* <Legend /> */}
+                <Bar dataKey="hospitalization" fill="#8884d8">
+                {
+                  barChartData.map((entry,index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]}/>)
+                }
+                </Bar>
+                <Bar dataKey=" insurance" fill="#82ca9d" />
+              </RechartsBarChart>
+            </ResponsiveContainer>
           </div>
-        ) : (
-          <Card style={{ display: "flex", justifyContent: "center" }}>
-            <Spin size="large" />
-          </Card>
-        )}
-      </Col>
-    </Row>
+        </div>
+      ) : (
+        <Card style={{ display: "flex", justifyContent: "center" }}>
+          <Spin size="large" />
+        </Card>
+      )}
+    </Col>
   );
 };
 
-export default LineChart;
+export default BarChart2;

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Typography, Divider, Row, Col } from "antd";
-import Stats from "./components/Stats";
-import LineChart from "./components/LineChart";
-import AreaChart from "./components/AreaChart";
+// import Stats from "./components/Stats";
+import BarChart2  from "./components/LineChart";
+import PieChart2 from "./components/AreaChart";
 import BarChart from "./components/BarChart";
 import PieChart from "./components/PieChart";
 import "./styles.css";
@@ -15,12 +15,13 @@ const DemoPage2 = () => {
     <div className="demo-container">
       <b><Texty style={{textAlign:"center", fontSize:"30px"}}>Useful Insights</Texty></b>
       <Divider />
-      <Stats />
-      <LineChart />
-      <AreaChart />
+      {/* <Stats /> */}
+      <BarChart2/>
+      {/* <LineChart /> */}
+      <PieChart />
       <Row className="row" gutter={[24, 24]}>
         <BarChart />
-        <PieChart />
+        <PieChart2 />
         <Col sm={{ span: 24 }} lg={{ span: 12 }}></Col>
       </Row>      
     </div>

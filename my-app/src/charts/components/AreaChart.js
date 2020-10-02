@@ -1,81 +1,59 @@
+
 import React, { useState, useEffect } from "react";
-import { Typography, Row, Col, Card, Spin } from "antd";
+import { Typography, Col, Card, Spin } from "antd";
 import {
   ResponsiveContainer,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  AreaChart as RechartsAreaChart,
-  Area,
+  PieChart as RechartsPieChart,
+  Pie, Legend, Cell, Tooltip
 } from "recharts";
 import { getAreaChartData } from "./api";
+// import Cell from '@bit/recharts.recharts.cell';
+
+const COLORS = ["#00846b", "#6a0084"]
 
 const { Title } = Typography;
 
-const AreaChart = () => {
-  const [areaChartData, setAreaChartData] = useState([]);
+const PieChart2 = () => {
+  const [pieChartData, setPieChartData] = useState([]);
 
   useEffect(() => {
     getAreaChartData().then((data) => {
-      setAreaChartData(data);
+      setPieChartData(data);
     });
   }, []);
 
   return (
-    <Row className="row" gutter={[24, 24]}>
-      <Col span={24}>
-        {areaChartData.length ? (
-          <div className="chart-container">
-            <Title level={4}>My super area chart</Title>
-            <div className="chart-inner">
-              <ResponsiveContainer>
-                <RechartsAreaChart
-                  data={areaChartData}
-                  margin={{
-                    top: 10,
-                    right: 30,
-                    left: 0,
-                    bottom: 0,
-                  }}
-                >
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" />
-                  <YAxis />
-                  <Tooltip />
-                  <Area
-                    type="monotone"
-                    dataKey="uv"
-                    stackId="1"
-                    stroke="#8884d8"
-                    fill="#8884d8"
-                  />
-                  <Area
-                    type="monotone"
-                    dataKey="pv"
-                    stackId="1"
-                    stroke="#82ca9d"
-                    fill="#82ca9d"
-                  />
-                  <Area
-                    type="monotone"
-                    dataKey="amt"
-                    stackId="1"
-                    stroke="#ffc658"
-                    fill="#ffc658"
-                  />
-                </RechartsAreaChart>
-              </ResponsiveContainer>
-            </div>
+    <Col sm={{ span: 24 }} lg={{ span: 12 }}>
+      {pieChartData.length ? (
+        <div className="chart-container">
+          <Title style={{textAlign:"center"}} level={4}>Mean Hospitalization Time Based On Admission Procedure</Title>
+          <div className="chart-inner">
+            <ResponsiveContainer>
+              <RechartsPieChart>
+                <Pie
+                  data={pieChartData}
+                  dataKey="hospitalization"
+                  nameKey= "admission_procedure"
+                  outerRadius={100}
+                  label
+                  >
+                  {
+                    pieChartData.map((entry,index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]}/>)
+                  }
+                </Pie>
+                <Legend/>
+                <Tooltip/>
+              </RechartsPieChart>
+            </ResponsiveContainer>
           </div>
-        ) : (
-          <Card style={{ display: "flex", justifyContent: "center" }}>
-            <Spin size="large" />
-          </Card>
-        )}
-      </Col>
-    </Row>
+        </div>
+      ) : (
+        <Card style={{ display: "flex", justifyContent: "center" }}>
+          <Spin size="large" />
+        </Card>
+      )}
+    </Col>
   );
 };
 
-export default AreaChart;
+export default PieChart2;
