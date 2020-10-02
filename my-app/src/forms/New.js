@@ -17,10 +17,25 @@ const AdvancedSearchForm = () => {
         const myValues = values["user"]
 
         const obj = {
-            Year: myValues["gender"],
-            Make: myValues["age"], 
-            Quantity: parseInt(myValues["email"]),
-            Pct: parseFloat(myValues["website"])
+            Gender: myValues["Gender"],
+            Age: myValues["Age"], 
+            Religion: parseInt(myValues["Religion"]),
+            Ethnicity: parseFloat(myValues["Ethnicity"]),
+            AdmissionType: myValues["AdmissionType"],
+            AdmissionOrigin: myValues["AdmissionOrigin"],
+            Insurance: myValues["Insurance"],
+            AdmissionProcedures: myValues["AdmissionProcedures"],
+            Callouts: myValues["Callouts"],
+            Diagnoses: myValues["Diagnoses"],
+            Procedures: myValues["Procedures"],
+            Transfers: myValues["Transfers"],
+            CptEvents: myValues["CptEvents"],
+            LabEvents: myValues["LabEvents"],
+            NoteEvents: myValues["NoteEvents"],
+            OutputEvents: myValues["OutputEvents"],
+            ChartEvents: myValues["ChartEvents"],
+            MicrobiologyEvents: myValues["MicrobiologyEvents"]
+
         } 
     
     axios.post(
@@ -50,7 +65,7 @@ const AdvancedSearchForm = () => {
             <Row gutter={30}>
                     <Col span={6}>
                         <Form.Item 
-                            name={['user','gender']} label="Gender"
+                            name={['user','Gender']} label="Gender"
                             rules={[
                                 {
                                     required: true,
@@ -59,14 +74,14 @@ const AdvancedSearchForm = () => {
                                 ]}
                         >
                             <RadioGroup>
-                                <Radio value={1}>Male</Radio>
-                                <Radio value={2}>Female</Radio>
+                                <Radio value="M">Male</Radio>
+                                <Radio value="F">Female</Radio>
                             </RadioGroup>
                         </Form.Item>
                     </Col>
                     <Col span={6}>
                         <Form.Item 
-                            name={['user', 'age']} label="Age"
+                            name={['user', 'Age']} label="Age"
                             rules={[
                                 {
                                     required: true,
@@ -79,7 +94,7 @@ const AdvancedSearchForm = () => {
                     </Col>
                     <Col span={6}>
                         <Form.Item 
-                            name={['user', 'religion']} label="Religion"
+                            name={['user', 'Religion']} label="Religion"
                             rules={[
                             {
                                 required: true,
@@ -88,20 +103,20 @@ const AdvancedSearchForm = () => {
                             ]}
                         >
                             <Select style={{width:"30mm"}} placeholder="Select">
-                                <Option value="Christian">Christian</Option>
-                                <Option value="Hebrew">Hebrew</Option>
-                                <Option value="Buddhist">Buddhist</Option>
-                                <Option value="Muslim">Muslim</Option>
-                                <Option value="Muslim">Muslim</Option>
-                                <Option value="Jehova's Witness">Jehova's Witness</Option>
-                                <Option value="No Religion">No Religion</Option>
-                                <Option value="Other">Other</Option>
+                                <Option value="CHRISTIAN">Christian</Option>
+                                <Option value="HEBREW">Hebrew</Option>
+                                <Option value="BUDDHIST">Buddhist</Option>
+                                <Option value="MUSLIM">Muslim</Option>
+                                <Option value="HINDU">Hindu</Option>
+                                <Option value="JEHOVAH'S WITNESS">Jehova's Witness</Option>
+                                <Option value="NO RELIGION">No Religion</Option>
+                                <Option value="OTHER">Other</Option>
                             </Select>
                         </Form.Item>
                     </Col>
                     <Col span={6}>
                         <Form.Item 
-                            name={['user', 'ethnicity']} label="Ethnicity"
+                            name={['user', 'Ethnicity']} label="Ethnicity"
                             rules={[
                             {
                                 required: true,
@@ -110,17 +125,18 @@ const AdvancedSearchForm = () => {
                             ]}
                         >
                             <Select style={{width:"30mm"}} placeholder="Select">
-                                <Option value="White">White</Option>
-                                <Option value="Black">Black</Option>
-                                <Option value="Hispanic/Latino">Hispanic/Latino</Option>
-                                <Option value="Asian">Asian</Option>
-                                <Option value="Other">Other</Option>
+                                <Option value="WHITE">White</Option>
+                                <Option value="BLACK">Black</Option>
+                                <Option value="HISPANIC/LATINO">Hispanic/Latino</Option>
+                                <Option value="ASIAN">Asian</Option>
+                                <Option value="UNKNOWN ETHNICITY">Unknown</Option>
+                                <Option value="OTHER ETHNICITY">Other</Option>
                             </Select>
                         </Form.Item>
                     </Col>
                     <Col span={6}>
                         <Form.Item 
-                            name={['user', 'admissionType']} label="Admission Type"
+                            name={['user', 'AdmissionType']} label="Admission Type"
                             rules={[
                                 {
                                     required: true,
@@ -138,7 +154,7 @@ const AdvancedSearchForm = () => {
                     </Col>
                     <Col span={6}>
                         <Form.Item 
-                            name={['user', 'admissionOrigin']} label="Admission Origin"
+                            name={['user', 'AdmissionOrigin']} label="Admission Origin"
                             rules={[
                             {
                                 required: true,
@@ -147,21 +163,21 @@ const AdvancedSearchForm = () => {
                             ]}
                         >
                             <Select style={{width:"45mm"}} placeholder="Select">
-                                <Option value="Emergency room admission">Emergency room admission</Option>
-                                <Option value="Physical referral">Physical referral</Option>
-                                <Option value="Clinic referral">Clinic referral</Option>
-                                <Option value="Hospital transfer">Hospital transfer</Option>
-                                <Option value="Referral">Referral</Option>
-                                <Option value="Nurse transfer">Nurse transfer</Option>
-                                <Option value="HMO referral">HMO referral</Option>
-                                <Option value="Health center transfer">Health center transfer</Option>
-                                <Option value="Unknown origin">Unknown origin</Option>
+                                <Option value="EMERGENCY ROOM ADMISSION">Emergency room admission</Option>
+                                <Option value="PHYSICAL REFERRAL">Physical referral</Option>
+                                <Option value="CLINIC REFERRAL">Clinic transfer</Option>
+                                <Option value="HOSPITAL TRANSFER">Hospital transfer</Option>
+                                <Option value="REFERRAL">Referral</Option>
+                                <Option value="NURSE TRANSFER">Nurse transfer</Option>
+                                <Option value="HMO REFERRAL">HMO referral</Option>
+                                <Option value="HEALTH CENTER TRANSFER">Health center transfer</Option>
+                                <Option value="UNKNOWN ORIGIN">Unknown origin</Option>
                             </Select>
                         </Form.Item>
                     </Col>
                     <Col span={6}>
                         <Form.Item 
-                            name={['user', 'insurance']} label="Insurance"
+                            name={['user', 'Insurance']} label="Insurance"
                             rules={[
                             {
                                 required: true,
@@ -170,18 +186,18 @@ const AdvancedSearchForm = () => {
                             ]}
                         >
                             <Select style={{width:"50mm"}} placeholder="Select">
-                                <Option value="Medicare">Medicare</Option>
-                                <Option value="Private">Private</Option>
-                                <Option value="MedicAid">MedicAid</Option>
-                                <Option value="Goverment">Goverment</Option>
-                                <Option value="Self Pay">Self Pay</Option>
-                                <Option value="Other">Other</Option>
+                                <Option value="MEDICARE">Medicare</Option>
+                                <Option value="PRIVATE">Private</Option>
+                                <Option value="MEDICAID">MedicAid</Option>
+                                <Option value="GOVERNMENT">Government</Option>
+                                <Option value="SELF PAY">Self Pay</Option>
+                                <Option value="UNSPECIFIED INSURANCE">Other</Option>
                             </Select>
                         </Form.Item>
                     </Col>
                     <Col span={6}>
                         <Form.Item 
-                            name={['user', 'admissionProcedures']} label="Admission Procedures"
+                            name={['user', 'AdmissionProcedures']} label="Admission Procedures"
                             rules={[
                                 {
                                     required: true,
@@ -190,14 +206,14 @@ const AdvancedSearchForm = () => {
                             ]}
                         >
                             <RadioGroup style={{marginLeft:"8mm"}}>
-                                <Radio value={1}>Yes</Radio>
-                                <Radio value={2}>No</Radio>
+                                <Radio value="Yes">Yes</Radio>
+                                <Radio value="No">No</Radio>
                             </RadioGroup>
                         </Form.Item>
                     </Col>
                     <Col span={6}>
                         <Form.Item 
-                            name={['user', 'numCallouts']} label="Callouts" 
+                            name={['user', 'Callouts']} label="Callouts" 
                             rules={[
                                 {
                                     required: true,
@@ -210,7 +226,7 @@ const AdvancedSearchForm = () => {
                     </Col>
                     <Col span={6}>
                         <Form.Item 
-                            name={['user', 'numDiagnoses']} label="Diagnoses"
+                            name={['user', 'Diagnoses']} label="Diagnoses"
                             rules={[
                                 {
                                     required: true,
@@ -223,7 +239,7 @@ const AdvancedSearchForm = () => {
                     </Col>
                     <Col span={6}>
                         <Form.Item 
-                            name={['user', 'numProcedures']} label="Procedures"
+                            name={['user', 'Procedures']} label="Procedures"
                             rules={[
                                 {
                                     required: true,
@@ -236,7 +252,7 @@ const AdvancedSearchForm = () => {
                     </Col>
                     <Col span={6}>
                         <Form.Item 
-                            name={['user', 'numTransfers']} label="Transfers"
+                            name={['user', 'Transfers']} label="Transfers"
                             rules={[
                                 {
                                     required: true,
@@ -249,7 +265,7 @@ const AdvancedSearchForm = () => {
                     </Col>
                     <Col span={6}>
                         <Form.Item 
-                            name={['user', 'numcptEvents']} label="Cpt Events"
+                            name={['user', 'CptEvents']} label="Cpt Events"
                             rules={[
                                 {
                                     required: true,
@@ -262,7 +278,7 @@ const AdvancedSearchForm = () => {
                     </Col>
                     <Col span={6}>
                         <Form.Item 
-                            name={['user', 'numlabEvents']} label="Lab Events"
+                            name={['user', 'LabEvents']} label="Lab Events"
                             rules={[
                                 {
                                     required: true,
@@ -275,7 +291,7 @@ const AdvancedSearchForm = () => {
                     </Col>
                     <Col span={6}>
                         <Form.Item 
-                            name={['user', 'noteEvents']} label="Note Events"
+                            name={['user', 'NoteEvents']} label="Note Events"
                             rules={[
                                 {
                                     required: true,
@@ -288,7 +304,7 @@ const AdvancedSearchForm = () => {
                     </Col>
                     <Col span={6}>
                         <Form.Item 
-                            name={['user', 'outputEvents']} label="Output Events"
+                            name={['user', 'OutputEvents']} label="Output Events"
                             rules={[
                                 {
                                     required: true,
@@ -301,7 +317,7 @@ const AdvancedSearchForm = () => {
                     </Col>
                     <Col span={6}>
                         <Form.Item 
-                            name={['user', 'numchartEvents']} label="Chart Events"
+                            name={['user', 'ChartEvents']} label="Chart Events"
                             rules={[
                                 {
                                     required: true,
@@ -314,7 +330,7 @@ const AdvancedSearchForm = () => {
                     </Col>
                     <Col span={6}>
                         <Form.Item 
-                            name={['user', 'nummicrobiologyEvents']} label="Microbiology Events"
+                            name={['user', 'MicrobiologyEvents']} label="Microbiology Events"
                             rules={[
                                 {
                                     required: true,

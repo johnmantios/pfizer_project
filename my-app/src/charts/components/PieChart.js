@@ -3,9 +3,12 @@ import { Typography, Col, Card, Spin } from "antd";
 import {
   ResponsiveContainer,
   PieChart as RechartsPieChart,
-  Pie,
+  Pie, Legend, Cell, Tooltip
 } from "recharts";
 import { getPieChartData } from "./api";
+// import Cell from '@bit/recharts.recharts.cell';
+
+const COLORS = ["#00846b", "#6a0084", "#840018", "#CCCC00","#280084"]
 
 const { Title } = Typography;
 
@@ -29,11 +32,16 @@ const PieChart = () => {
                 <Pie
                   data={pieChartData}
                   dataKey="size"
-                  
+                  nameKey= "Hospitalization2"
                   outerRadius={100}
-                  fill="#8884d8"
                   label
-                />
+                  >
+                  {
+                    pieChartData.map((entry,index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]}/>)
+                  }
+                </Pie>
+                <Legend/>
+                <Tooltip/>
               </RechartsPieChart>
             </ResponsiveContainer>
           </div>

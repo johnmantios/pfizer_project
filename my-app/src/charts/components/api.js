@@ -20,15 +20,15 @@ export const getAreaChartData = async () => {
 };
 
 export const getBarChartData = async () => {
-  const res = await fetch("https://api.npoint.io/0a881b3c1fecffae45ad");
+  const res = await fetch("http://127.0.0.1:5000/api/v1.0/stats");
   const data = await res.json();
 
-  return data;
+  return data["stats"]["bar_data"];
 };
 
 export const getPieChartData = async () => {
   const res = await fetch("http://127.0.0.1:5000/api/v1.0/stats");
   const data = await res.json();
-
-  return data;
+  console.log(data)
+  return data["stats"]["pie_data"];
 };
