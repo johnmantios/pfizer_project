@@ -352,7 +352,7 @@ const AdvancedSearchForm = () => {
             </Form>
         </Card>
         <Card style={{marginLeft:"20mm", marginRight:"20mm", textAlign: 'center'}}>
-            <h1 style={{fontSize:"25px"}}><b>Prediction {aState}</b></h1>
+            <h1 style={{fontSize:"25px"}}><b>Duration of hospitalization: <i>{aState}</i></b></h1>
         </Card>
     </div>
   );
